@@ -20,13 +20,17 @@ def move(board,player):
                     return ((i,j),(m,n))
                 des.append(((i,j),(m,n)))
                 scores.append(score)
-    max_score=scores[0]
-    result=des[0]
-    for k in range(1,len(scores)):
-        if scores[k]>max_score:
-            max_score=scores[k]
-            result=des[k]
-    return result
+    
+    if len(scores)!=0:
+        max_score=scores[0]
+        result=des[0]
+        for k in range(1,len(scores)):
+            if scores[k]>max_score:
+                max_score=scores[k]
+                result=des[k]
+        return result
+    else:
+        return "khong chon dc loi di"
 def testmove(b,player,i,j,tam): #thu di chuyen ra xung quanh vi tri i,j
     if tam==True:
         des=des8(i,j)
@@ -168,11 +172,11 @@ def eval(board,player):
             elif board[i][j]==-player: eval_p+=1
     return eval_player-eval_p
 
-board=[ [     1, 0, 1, 1, 1],
-            [-1,-1,-1, 0, 1],
-            [ 0, 0, 0, 0, 1],
+board=[ [     -1, 0, -1, -1, -1],
+            [-1,-1,-1, 0, -1],
+            [ 0, 0, 0, 0, -1],
             [-1, 0, 0, 0,-1],
             [-1,-1,-1,-1,-1]
             ]
-print(move(board,-1))
+print(move(board,1))
     
